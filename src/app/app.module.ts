@@ -7,10 +7,17 @@ import { HttpClientModule } from "@angular/common/http";
 
 // Modules
 import { AuthModule } from "./components/auth/auth.module";
+import { DashboardModule } from "./components/dashboard/dashboard.module";
 
 @NgModule({
 	declarations: [AppComponent],
-	imports: [BrowserModule, AppRoutingModule, HttpClientModule, AuthModule],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		HttpClientModule,
+		AuthModule,
+		DashboardModule
+	],
 	providers: [],
 	bootstrap: [AppComponent]
 })

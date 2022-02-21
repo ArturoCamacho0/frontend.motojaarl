@@ -1,50 +1,45 @@
-import { environment } from './../../../environments/environment';
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
-import { Router } from '@angular/router';
+import { environment } from "./../../../environments/environment";
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: "root"
 })
 export class UserService {
-  public url: string;
-  public headers: HttpHeaders;
+	public url: string;
+	public headers: HttpHeaders;
+	public user: JSON | null;
+	public token: string | null;
 
-  private user: BehaviorSubject<JSON | null> = new BehaviorSubject<JSON | null>(
-    null
-  );
-  user$ = this.user.asObservable();
+	constructor(private http: HttpClient) {
+		this.url = environment.url;
 
-  private token: BehaviorSubject<string | null> = new BehaviorSubject<
-    string | null
-  >(null);
-  token$ = this.token.asObservable();
+		this.user = localStorage.getItem("user")
+			? JSON.parse(JSON.stringify(localStorage.getItem("user")))
+			: null;
 
-  constructor(private http: HttpClient, private router: Router) {
-    this.url = environment.url;
+		this.token = localStorage.getItem("token")
+			? localStorage.getItem("token")
+			: null;
 
-    this.headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + localStorage.getItem('token')
-    });
-  }
+		this.headers = new HttpHeaders({
+			"Content-Type": "application/json",
+			Authorization: "Bearer " + this.token
+		});
+	}
 
-  // Login user
-  public login(user: JSON) {
-    return this.http.post(this.url + 'login', user).subscribe(
-      response => {
-        let res = JSON.parse(JSON.stringify(response));
-        if(res.token && res.user){
-          this.token.next(res.token);
-          this.user.next(res.user);
+	// Login user
+	public login(user: JSON) {
+		return this.http.post(`${this.url}login`, user, {
+			headers: this.headers
+		});
+	}
 
-          this.router.navigate(['dashboard']);
-        }
-      },
-      error => {
-        console.error(error);
-      }
-    );
-  }
+	// Logout user
+	public logout() {
+		localStorage.removeItem("token");
+		localStorage.removeItem("user");
+		this.user = null;
+		this.token = null;
+	}
 }

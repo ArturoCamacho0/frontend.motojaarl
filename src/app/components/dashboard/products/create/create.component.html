@@ -1,0 +1,365 @@
+<div class="p-4 overflow-hidden">
+	<h2 class="text-xl font-extrabold text-slate-200 text-center my-3">
+		Crea un nuevo producto
+	</h2>
+	<form class="w-3/4 mx-auto">
+		<div class="relative z-0 mb-6 w-full group">
+			<input
+				type="text"
+				[disabled]="loading"
+				name="key"
+				class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+				placeholder=" "
+				[(ngModel)]="product.key"
+				[ngModelOptions]="{standalone: true}"
+			/>
+			<label
+				for="key"
+				class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+				>Clave del producto</label
+			>
+		</div>
+		<div class="relative z-0 mb-6 w-full group">
+			<input
+				type="text"
+				name="name"
+				[disabled]="loading"
+				id="floating_password"
+				class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+				placeholder=" "
+				[(ngModel)]="product.name"
+				[ngModelOptions]="{standalone: true}"
+			/>
+			<label
+				for="name"
+				class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+				>Nombre del producto</label
+			>
+		</div>
+		<div class="relative z-0 mb-6 w-full group">
+			<input
+				type="text"
+				name="description"
+				[disabled]="loading"
+				id="description"
+				class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+				placeholder=" "
+				[(ngModel)]="product.description"
+				[ngModelOptions]="{standalone: true}"
+			/>
+			<label
+				for="description"
+				class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+				>Descripci&oacute;n del producto</label
+			>
+		</div>
+		<div class="grid xl:grid-cols-2 xl:gap-6">
+			<div class="relative z-0 mb-6 w-full group">
+				<input
+					type="number"
+					name="stock"
+					[disabled]="loading"
+					id="floating_first_name"
+					class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+					placeholder=" "
+					[(ngModel)]="product.stock"
+					[ngModelOptions]="{standalone: true}"
+				/>
+				<label
+					for="stock"
+					class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+					>Cantidad disponible</label
+				>
+			</div>
+			<div class="relative z-0 mb-6 w-full group">
+				<input
+					type="number"
+					[disabled]="loading"
+					name="minimum"
+					id="floating_last_name"
+					class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+					placeholder=" "
+					[(ngModel)]="product.minimum"
+					[ngModelOptions]="{standalone: true}"
+				/>
+				<label
+					for="minimum"
+					class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+					>M&iacute;nimo disponible</label
+				>
+			</div>
+		</div>
+		<label
+			for="category_id"
+			class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+			>Categor&iacute;a</label
+		>
+		<select
+			[disabled]="loading"
+			id="category_id"
+			[(ngModel)]="product.category_id"
+			[ngModelOptions]="{standalone: true}"
+			class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+		>
+			<option selected value="0">Selecciona una categor&iacute;a</option>
+			<option *ngFor="let category of categories" [ngValue]="category.id">
+				{{ category.name }}
+			</option>
+		</select>
+
+		<h3 class="mt-7 font-bold text-gray-300 text-lg">
+			Precios del producto
+		</h3>
+		<div
+			class="grid xl:grid-cols-2 xl:gap-6 mt-3"
+			*ngFor="let control of prices.controls; let i = index"
+		>
+			<div class="relative z-0 w-full group">
+				<label
+					for="price"
+					class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+					>Tipo de precio</label
+				>
+				<select
+					[disabled]="loading"
+					id="price"
+					[disabled]="prices.controls[i].value.id_form === 0"
+					[ngModelOptions]="{standalone: true}"
+					[(ngModel)]="prices.controls[i].value.id"
+					class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+				>
+					<option value="0">Selecciona un tipo de precio</option>
+					<option
+						[selected]="prices.controls[i].value.id_form === 0"
+						value="1"
+						*ngIf="prices.controls[i].value.id_form === 0"
+					>
+						Precio base
+					</option>
+				</select>
+			</div>
+			<div class="relative z-0 mb-2 mt-7 w-full group flex flex-row">
+				<div
+					class="absolute inset-y-0 left-0 flex items-center pointer-events-none"
+				>
+					<span class="text-white sm:text-sm"> $ </span>
+				</div>
+				<input
+					[disabled]="loading"
+					type="number"
+					name="minimum"
+					id="floating_last_name"
+					class="block py-2.5 pl-4 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+					placeholder=""
+					[(ngModel)]="prices.controls[i].value.price"
+					[ngModelOptions]="{standalone: true}"
+				/>
+				<label
+					for="minimum"
+					class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+					>Precio</label
+				>
+
+				<button
+					[disabled]="loading"
+					type="button"
+					*ngIf="prices.controls[i].value.id_form !== 0"
+					(click)="deletePrice(i)"
+					class="my-auto text-xl ml-3 text-red-500 cursor-pointer hover:text-red-200"
+				>
+					<i class="fa-solid fa-delete-left"></i>
+				</button>
+			</div>
+		</div>
+
+		<button
+			[disabled]="loading"
+			(click)="addPrice()"
+			type="button"
+			class="py-2 px-4 mt-4 flex justify-center items-center bg-blue-700 hover:bg-blue-600 focus:bg-blue-500 focus:ring-offset-blue-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg w-fit"
+		>
+			<i class="fa-solid fa-circle-plus mr-3"></i>
+			Agregar otro precio
+		</button>
+
+		<button
+			[disabled]="loading"
+			(click)="onSubmit()"
+			type="button"
+			class="text-green-700 mt-6 mb-7 float-right hover:text-white border flex border-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800"
+		>
+			<svg
+				*ngIf="loading"
+				width="20"
+				height="20"
+				fill="currentColor"
+				class="mr-2 animate-spin"
+				viewBox="0 0 1792 1792"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path
+					d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z"
+				></path>
+			</svg>
+			Crear producto
+		</button>
+	</form>
+</div>
+
+<div
+	*ngIf="showError"
+	id="alert-2"
+	class="flex fixed bottom-0 right-5 p-4 mb-4 bg-red-100 rounded-lg dark:bg-red-200"
+	role="alert"
+>
+	<svg
+		class="flex-shrink-0 w-5 h-5 text-red-700 dark:text-red-800"
+		fill="currentColor"
+		viewBox="0 0 20 20"
+		xmlns="http://www.w3.org/2000/svg"
+	>
+		<path
+			fill-rule="evenodd"
+			d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+			clip-rule="evenodd"
+		></path>
+	</svg>
+	<div class="ml-3 text-sm font-medium text-red-700 dark:text-red-800">
+		Ha ocurrido un error, int&eacute;ntalo de nuevo.
+	</div>
+	<button
+		(click)="showError = false"
+		type="button"
+		class="ml-auto -mx-1.5 -my-1.5 bg-red-100 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex h-8 w-8 dark:bg-red-200 dark:text-red-600 dark:hover:bg-red-300"
+		data-collapse-toggle="alert-2"
+		aria-label="Close"
+	>
+		<span class="sr-only">Cerrar</span>
+		<svg
+			class="w-5 h-5"
+			fill="currentColor"
+			viewBox="0 0 20 20"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<path
+				fill-rule="evenodd"
+				d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+				clip-rule="evenodd"
+			></path>
+		</svg>
+	</button>
+</div>
+
+<div
+	*ngIf="showSuccess"
+	id="alert-3"
+	class="flex fixed bottom-0 right-5 p-4 mb-4 bg-green-100 rounded-lg dark:bg-green-200"
+	role="alert"
+>
+	<svg
+		class="flex-shrink-0 w-5 h-5 text-green-700 dark:text-green-800"
+		fill="currentColor"
+		viewBox="0 0 20 20"
+		xmlns="http://www.w3.org/2000/svg"
+	>
+		<path
+			fill-rule="evenodd"
+			d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+			clip-rule="evenodd"
+		></path>
+	</svg>
+	<div class="ml-3 text-sm font-medium text-green-700 dark:text-green-800">
+		El producto se ha creado correctamente.
+		<a
+			href="#"
+			class="font-semibold underline hover:text-green-800 dark:hover:text-green-900"
+			>Ver el producto</a
+		>
+	</div>
+	<button
+		(click)="showSuccess = false"
+		type="button"
+		class="-mx-1.5 -my-1.5 ml-3 bg-green-100 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex h-8 w-8 dark:bg-green-200 dark:text-green-600 dark:hover:bg-green-300"
+		data-collapse-toggle="alert-3"
+		aria-label="Close"
+	>
+		<span class="sr-only">Close</span>
+		<svg
+			class="w-5 h-5"
+			fill="currentColor"
+			viewBox="0 0 20 20"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<path
+				fill-rule="evenodd"
+				d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+				clip-rule="evenodd"
+			></path>
+		</svg>
+	</button>
+</div>
+
+<div class="h-screen flex justify-center items-center" *ngIf="showModal">
+	<div
+		class="overflow-y-auto bg-slate-500/50 backdrop-blur-xl overflow-x-hidden fixed right-0 left-0 top-0 z-50 md:inset-0 m-0"
+		id="popup-modal"
+		aria-hidden="true"
+	>
+		<div class="relative w-full max-w-md h-full without">
+			<div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+				<div class="flex justify-end p-2">
+					<button
+						(click)="showModal = false"
+						type="button"
+						class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+						data-modal-toggle="authentication-modal"
+					>
+						<svg
+							class="w-5 h-5"
+							fill="currentColor"
+							viewBox="0 0 20 20"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+								clip-rule="evenodd"
+							></path>
+						</svg>
+					</button>
+				</div>
+				<form
+					class="px-6 pb-4 space-y-6 lg:px-8 sm:pb-6 xl:pb-8"
+					action="#"
+				>
+					<h3
+						class="text-xl font-medium text-gray-900 dark:text-white"
+					>
+						Agrega un nuevo tipo precio
+					</h3>
+					<div>
+						<label
+							for="name_price"
+							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+							>Nombre del tipo precio</label
+						>
+						<input
+							type="text"
+							name="name_price"
+							id="name"
+							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+							placeholder="Introduce el nombre del tipo para el precio..."
+						/>
+					</div>
+
+					<button
+						type="button"
+						class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+					>
+						Crear
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
